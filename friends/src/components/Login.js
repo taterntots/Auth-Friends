@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-function Login() {
+function Login(props) {
     const [credentials, setCredentials] = useState({
         username: '',
         password: '',
@@ -11,6 +12,15 @@ function Login() {
 
     const login = event => {
         event.preventDefault();
+        setCredentials({ 
+            isFetching: true
+        })
+        axiosWithAuth()
+            .post('/login', credentials)
+            .then(res => {
+                localStorage.setItem('token', res.data.payload);
+                props.history.push('/FriendsList');
+            })
     }
 
     const handleChange = event => {
@@ -23,7 +33,7 @@ function Login() {
 
     return (
         <div>
-            <form>
+            <form onSubmit={login}>
                 <input
                     type='text'
                     name='username'
