@@ -9,6 +9,10 @@ function Login() {
 
     console.log(credentials);
 
+    const login = event => {
+        event.preventDefault();
+    }
+
     const handleChange = event => {
         event.preventDefault();
         setCredentials({
