@@ -18,11 +18,20 @@ function AddFriendForm (props) {
             })
     }
 
+    // const removeFriend = event => {
+    //     event.preventDefault();
+    //     axiosWithAuth()
+    //         .delete(`/friends/&{id}`)
+    //         .then(res => {
+    //             console.log(res);
+    //         })
+    // }
+
     const handleChange = event => {
         event.preventDefault();
         setNewFriend({
             ...newFriend,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.type === 'number' ? +event.target.value: event.target.value
         })
     }
 
@@ -37,7 +46,7 @@ function AddFriendForm (props) {
                     onChange={handleChange}
                 />
                 <input 
-                    type='text'
+                    type='number'
                     name='age'
                     placeholder='age'
                     value={newFriend.age}
