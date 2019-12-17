@@ -22,6 +22,7 @@ function Login(props) {
                 localStorage.setItem('token', res.data.payload);
                 props.history.push('/friends');
             })
+            .catch(err => console.group(err))
     }
 
     const handleChange = event => {
