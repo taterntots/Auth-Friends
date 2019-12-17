@@ -5,6 +5,7 @@ function FriendCard (props) {
         <div className='friend-info'>
             <h1>{props.name}</h1>
             <p>{props.age}</p>
+            <p>{props.email}</p>
         </div>
     )
 }
